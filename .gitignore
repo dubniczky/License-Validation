@@ -1,0 +1,5 @@
+secrets/*
+!secrets/.gitkeep
+
+.vscode/
+__pycache__/
