@@ -19,7 +19,7 @@ def sign_license(email, expiry, private_key):
     return private_key_encrypt(message, private_key)
 
 
-def read_public_key(filename):
+def read_private_key(filename):
     with open(filename, "rb") as f:
         return RSA.importKey(f.read())
     
@@ -29,7 +29,7 @@ if __name__ == "__main__":
         print("Usage: python sign.py <private_key_file> <email> <expiry>")
         sys.exit(1)
     
-    key = read_public_key(sys.argv[1])
+    key = read_private_key(sys.argv[1])
     email = sys.argv[2]
     expiry, = sys.argv[3:4] or [ str(int(time.time())) ]
     
