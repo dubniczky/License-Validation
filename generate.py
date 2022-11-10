@@ -1,7 +1,7 @@
 from Crypto.PublicKey import RSA
 
 # generate public key
-def generate_key_pair(bits = 2048):
+def generate_key_pair(bits = 1024):
     key = RSA.generate(bits)
     private_key = key
     public_key = key.publickey()
