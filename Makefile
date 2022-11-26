@@ -11,3 +11,7 @@ sign::
 # Verify a license
 verify::
 	$(py) verify.py $(pub_file) $(license_file) richard@example.com 16997468950917
+
+# Generate the key pair
+generate::
+	$(py) generate.py
