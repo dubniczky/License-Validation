@@ -3,6 +3,7 @@
 import re
 import sys
 import time
+import base64
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
 from Crypto.Hash import SHA256
@@ -15,7 +16,7 @@ def verify_license(email, expiry, license, public_key):
     digest.update(message.encode('utf-8'))
     # verify
     verifier = PKCS1_v1_5.new(public_key)
-    return verifier.verify(digest, bytes.fromhex(license))
+    return verifier.verify(digest, base64.b64decode(license))
 
 
 def read_public_key(filename):
