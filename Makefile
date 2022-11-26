@@ -1,11 +1,13 @@
+py := python
 priv_file := "secrets/private.pem"
 pub_file := "secrets/public.pem"
-license_file := "secrets/license.txt"
+license_file := "licenses/1.pem"
+
 
 # Generate a license
 sign::
-	python sign.py $(priv_file) richard@example.com
+	$(py) sign.py $(priv_file) richard@example.com
 
 # Verify a license
 verify::
-	python verify.py $(pub_file) $(license)
+	$(py) verify.py $(pub_file) $(license_file) richard@example.com 1699746895017

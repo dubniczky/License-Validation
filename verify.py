@@ -1,5 +1,6 @@
 #!/usr/local/env python
 
+import re
 import sys
 import time
 from Crypto.PublicKey import RSA
@@ -26,12 +27,22 @@ def read_signature_file(filename):
     with open(filename, "r", encoding='utf-8') as f:
         return f.read()
     
+    
+def from_pem(pem):
+    m = re.search('----- BEGIN APP LICENSE -----\n[a-zA-Z0-9/+=]+\n----- END APP LICENSE -----', pem, flags=re.M)
+    if m:
+        found = m.group(1)
+        
+    print(found)
+    
 
 def verify_expiry(expiry):
     return time.time() < float(expiry) / 1000.0
 
 def verify(email, expiry, signature, public_key):
     return verify_expiry(expiry) and verify_license(email, expiry, signature, public_key)
+
+
     
 
 if __name__ == "__main__":

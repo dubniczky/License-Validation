@@ -26,9 +26,9 @@ def read_private_key(filename):
 def to_pem(license, email, expiry):
     metadata = f'{email}:{expiry}'.encode('utf-8')
     return '\n'.join([
-        '----- BEGIN APP LICENSE -----',
+        #'----- BEGIN APP LICENSE -----',
         base64.b64encode(license + metadata).decode('utf-8'),
-        '----- END APP LICENSE -----',
+        #'----- END APP LICENSE -----',
     ])
     
 
